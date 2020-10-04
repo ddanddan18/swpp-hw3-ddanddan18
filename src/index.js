@@ -12,12 +12,10 @@ import { connectRouter, routerMiddleware } from "connected-react-router";
 import { createBrowserHistory } from "history";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import signReducer from "./store/reducers/sign";
 import articleReducer from "./store/reducers/article";
 import userReducer from "./store/reducers/user";
 
 const rootReducer = combineReducers({
-  sign: signReducer,
   atc: articleReducer,
   user: userReducer,
 });

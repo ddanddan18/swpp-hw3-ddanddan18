@@ -10,6 +10,7 @@ import * as actionCreators from "./store/actions/index";
 class App extends Component {
   componentDidMount() {
     this.props.onGetUsers();
+    this.props.onGetLoggedIn();
   }
   render() {
     return (
@@ -18,8 +19,8 @@ class App extends Component {
           <Switch>
             <Route path="/login" exact component={Login} />
             <Redirect exact from="/" to="/login" />
-            <AuthRoute authenticated={this.props.isLogin} path="/articles" exact component={ArticleList} />
-            <AuthRoute authenticated={this.props.isLogin} render={() => <h1>Not Found</h1>} />
+            <AuthRoute authenticated={this.props.isLoggedIn} path="/articles" exact component={ArticleList} />
+            <AuthRoute authenticated={this.props.isLoggedIn} render={() => <h1>Not Found</h1>} />
           </Switch>
         </div>
       </BrowserRouter>
@@ -40,9 +41,16 @@ function AuthRoute({ authenticated, component: Component, render, ...rest }) {
   );
 }
 
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.user.isLoggedIn,
+    users: state.user.users,
+  };
+};
 const mapDispatchToProps = (dispatch) => {
   return {
     onGetUsers: () => dispatch(actionCreators.getUsers()),
+    onGetLoggedIn: () => dispatch(actionCreators.getLoggedIn()),
   };
 };
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
