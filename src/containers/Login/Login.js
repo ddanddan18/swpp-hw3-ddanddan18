@@ -37,6 +37,7 @@ class Login extends Component {
   };
 
   authenticateInput = () => {
+    // TODO change to use api login
     const isValid = this.state.id === "swpp@snu.ac.kr" && this.state.pw === "iluvswpp";
     if (!isValid) alert("Email or password is wrong");
     return isValid;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
@@ -10,13 +10,19 @@ import { applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { connectRouter, routerMiddleware } from "connected-react-router";
 import { createBrowserHistory } from "history";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 import signReducer from "./store/reducers/sign";
+import articleReducer from "./store/reducers/article";
+import userReducer from "./store/reducers/user";
 
 const rootReducer = combineReducers({
   sign: signReducer,
+  atc: articleReducer,
+  user: userReducer,
 });
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+export { store };
 
 ReactDOM.render(
   <Provider store={store}>

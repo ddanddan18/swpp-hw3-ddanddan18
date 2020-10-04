@@ -5,8 +5,12 @@ import { ConnectedRouter } from "connected-react-router";
 import Login from "./containers/Login/Login";
 import ArticleList from "./containers/Articles/ArticleList";
 import { connect } from "react-redux";
+import * as actionCreators from "./store/actions/index";
 
 class App extends Component {
+  componentDidMount() {
+    this.props.onGetUsers();
+  }
   render() {
     return (
       <BrowserRouter>
@@ -26,13 +30,19 @@ class App extends Component {
 // 로그인 되어있지 않으면 로그인 페이지로 보내는 라우팅
 // 로그인 되어있을 경우에는 기존대로 라우팅 (로그인 되어있을 때 로그인 화면에서 articles 로 redirect하는 것은 Login.js에 구현)
 function AuthRoute({ authenticated, component: Component, render, ...rest }) {
-  return <Route {...rest} render={(props) => (authenticated ? render ? render(props) : <Component {...props} /> : <Redirect to={{ pathname: "/login" }} />)} />;
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        authenticated ? render ? render(props) : <Component {...props} /> : <Redirect to={{ pathname: "/login" }} />
+      }
+    />
+  );
 }
 
-const mapStateToProps = (state) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    isLogin: state.sign.isLogin,
+    onGetUsers: () => dispatch(actionCreators.getUsers()),
   };
 };
-
-export default connect(mapStateToProps, null)(App);
+export default connect(null, mapDispatchToProps)(App);
