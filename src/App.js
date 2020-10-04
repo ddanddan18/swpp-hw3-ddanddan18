@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
 import Login from "./containers/Login/Login";
 import ArticleList from "./containers/Articles/ArticleList";
+import NewArticle from "./containers/NewArticle/NewArticle";
+import ArticleDetail from "./components/Article/Detail";
 import { connect } from "react-redux";
 import * as actionCreators from "./store/actions/index";
 
@@ -20,6 +22,8 @@ class App extends Component {
             <Route path="/login" exact component={Login} />
             <Redirect exact from="/" to="/login" />
             <AuthRoute authenticated={this.props.isLoggedIn} path="/articles" exact component={ArticleList} />
+            <AuthRoute authenticated={this.props.isLoggedIn} path="/articles/:id" exact component={ArticleDetail} />
+            <AuthRoute authenticated={this.props.isLoggedIn} path="/articles/create" exact component={NewArticle} />
             <AuthRoute authenticated={this.props.isLoggedIn} render={() => <h1>Not Found</h1>} />
           </Switch>
         </div>
