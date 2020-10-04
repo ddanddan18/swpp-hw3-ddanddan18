@@ -13,7 +13,7 @@ class ArticleList extends Component {
       // TODO article author name match
       // TODO clickTitleHandler만들기
       return (
-        <Article key={atc.id} title={atc.title} name={atc.author_id} clickTitle={() => this.clickTitleHandler(atc)} />
+        <Article id={atc.id} title={atc.title} name={atc.author_id} clickTitle={() => this.clickTitleHandler(atc)} />
       );
     });
 

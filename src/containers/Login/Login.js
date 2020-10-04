@@ -9,6 +9,8 @@ class Login extends Component {
     pw: "",
   };
   render() {
+    // TODO 이렇게 redirect 하는걸로 충분한가? 리다이렉트되는게 눈에 보이긴 함.
+    // 아예 안가도록 막아야하나?
     if (this.props.isLoggedIn) {
       return <Redirect to="/articles" />;
     }
