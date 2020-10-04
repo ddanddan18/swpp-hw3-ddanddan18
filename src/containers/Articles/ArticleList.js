@@ -3,6 +3,7 @@ import { Redirect } from "react-router";
 import { connect } from "react-redux";
 import Article from "../../components/Article/Article";
 import * as actionCreators from "../../store/actions/index";
+import Logout from "../Login/Logout";
 
 class ArticleList extends Component {
   componentDidMount() {
@@ -20,14 +21,23 @@ class ArticleList extends Component {
 
   render() {
     const articles = this.props.storedArticles.map((atc) => {
-      // TODO article author name match
+      // get author name from author_id
+      const authorUser = this.props.users.find((user) => user.id === atc.author_id);
+
       return (
-        <Article id={atc.id} title={atc.title} name={atc.author_id} clickTitle={() => this.clickTitleHandler(atc)} />
+        <Article
+          key={atc.id}
+          id={atc.id}
+          title={atc.title}
+          name={authorUser.name}
+          clickTitle={() => this.clickTitleHandler(atc)}
+        />
       );
     });
 
     return (
       <div className="ArticleList">
+        <Logout />
         <div className="articles">{articles}</div>
         <button id="create-article-button" onClick={() => this.onClickCreate()}>
           Create Article

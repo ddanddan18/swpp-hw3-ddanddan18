@@ -40,3 +40,19 @@ export const login = (user) => {
       });
   };
 };
+export const logout_ = (id) => {
+  return { type: actionTypes.LOGOUT, targetID: id };
+};
+
+export const logout = (user) => {
+  return (dispatch) => {
+    return axios
+      .put("/api/user/1", {
+        ...user,
+        logged_in: false,
+      })
+      .then((res) => {
+        dispatch(logout_(res.data.id));
+      });
+  };
+};

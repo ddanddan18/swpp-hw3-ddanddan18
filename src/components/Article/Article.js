@@ -4,7 +4,7 @@ const Article = (props) => {
   return (
     <div className="Article">
       <label>{props.id} </label>
-      <button className="title" onClick={props.clickTitle}>
+      <button id="title" className="title" onClick={props.clickTitle}>
         {props.title}
       </button>
       <label> {props.name}</label>
