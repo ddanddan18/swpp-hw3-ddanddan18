@@ -16,7 +16,7 @@ class App extends Component {
   }
   render() {
     return (
-      <BrowserRouter>
+      <ConnectedRouter history={this.props.history}>
         <div className="App">
           <Switch>
             <Route path="/login" exact component={Login} />
@@ -28,7 +28,7 @@ class App extends Component {
             <AuthRoute authenticated={this.props.isLoggedIn} render={() => <h1>Not Found</h1>} />
           </Switch>
         </div>
-      </BrowserRouter>
+      </ConnectedRouter>
     );
   }
 }

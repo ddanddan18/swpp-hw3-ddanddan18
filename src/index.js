@@ -15,16 +15,18 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import articleReducer from "./store/reducers/article";
 import userReducer from "./store/reducers/user";
 
+const history = createBrowserHistory();
 const rootReducer = combineReducers({
   atc: articleReducer,
   user: userReducer,
+  router: connectRouter(history),
 });
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk, routerMiddleware(history))));
 export { store };
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <App history={history} />
   </Provider>,
   document.getElementById("root")
 );
