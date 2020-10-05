@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import NewComment from "../../containers/NewComment/NewComment";
 import ArticleView from "./ArticleView";
+import CommentList from "../../containers/Comments/CommentList";
 import * as actionCreators from "../../store/actions/index";
+import Logout from "../../containers/Login/Logout";
 
 class Detail extends Component {
   componentDidMount() {
@@ -22,9 +24,11 @@ class Detail extends Component {
     }
     return (
       <div className="Detail">
+        <Logout />
         <ArticleView title={title} content={content} authorName={authorName} />
         {/* TODO article detail buttons */}
         {/* TODO comments 불러오기 */}
+        <CommentList articleID={articleID} />
         <NewComment articleID={articleID} />
         <br />
       </div>

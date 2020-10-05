@@ -7,7 +7,7 @@ import Logout from "../Login/Logout";
 
 class ArticleList extends Component {
   componentDidMount() {
-    this.props.onGetArticles(this.props.articles);
+    this.props.onGetArticles();
   }
 
   clickCreateHandler = () => {

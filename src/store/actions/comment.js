@@ -3,12 +3,14 @@ import axios from "axios";
 import { push } from "connected-react-router";
 
 export const getComments_ = (comments) => {
-  return { type: actionTypes.GET_ALL_COMMENTS, comments };
+  return { type: actionTypes.GET_ALL_COMMENTS, comments: comments };
 };
 
 export const getComments = () => {
   return (dispatch) => {
-    return axios.get("/api/comments").then((res) => dispatch(getComments_(res.data)));
+    return axios.get("/api/comments").then((res) => {
+      dispatch(getComments_(res.data));
+    });
   };
 };
 

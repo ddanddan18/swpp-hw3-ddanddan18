@@ -13,6 +13,7 @@ class NewComment extends Component {
 
   postCommentHandler = () => {
     this.props.onStoreComment(this.props.userID, this.props.articleID, this.state.comment);
+    this.setState({ comment: "" });
   };
   render() {
     return (
