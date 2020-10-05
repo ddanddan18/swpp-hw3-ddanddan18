@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router";
 import { connect } from "react-redux";
-import Article from "../../components/Article/Article";
+import Article from "../../components/ArticleView/Article";
 import * as actionCreators from "../../store/actions/index";
 import Logout from "../Login/Logout";
 
@@ -39,7 +39,14 @@ class ArticleList extends Component {
       <div className="ArticleList">
         <Logout />
         <div className="articles">{articles}</div>
-        <button id="create-article-button" onClick={() => this.onClickCreate()}>
+
+        <button
+          id="create-article-button"
+          onClick={() => {
+            console.log("onclick create function?");
+            this.onClickCreate();
+          }}
+        >
           Create Article
         </button>
       </div>

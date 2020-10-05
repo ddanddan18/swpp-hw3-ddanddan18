@@ -49,7 +49,7 @@ class Login extends Component {
   };
 
   authenticateInput = () => {
-    // TODO change to check with userlist
+    // TODO change to check with userlist (in hw4)
     const isValid = this.state.id === "swpp@snu.ac.kr" && this.state.pw === "iluvswpp";
     if (!isValid) alert("Email or password is wrong");
     return isValid;
