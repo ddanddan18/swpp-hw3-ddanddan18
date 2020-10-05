@@ -12,7 +12,8 @@ const reducer = (state = initialState, action) => {
 
     case GET_LOGGED_IN:
       if (action.isLoggedIn == null) return { ...state, isLoggedIn: false, userID: null };
-      return { ...state, isLoggedIn: action.isLoggedIn, userID: action.userID };
+      const loggedinUser = action.isLoggedIn ? action.userID : null;
+      return { ...state, isLoggedIn: action.isLoggedIn, userID: loggedinUser };
 
     case LOGIN:
       let loginId = null;

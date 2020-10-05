@@ -1,4 +1,4 @@
-import { GET_ALL_ARTICLES, GET_ARTICLE } from "../actions/actionTypes";
+import { ADD_ARTICLE, GET_ALL_ARTICLES, GET_ARTICLE } from "../actions/actionTypes";
 
 const initialState = {
   articles: [],
@@ -9,14 +9,18 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_ARTICLES:
       return { ...state, articles: action.articles };
-    // const articlesWithName = action.articles.map((atc) => {
-    //   return { ...atc, author_name: action.users.find((user) => user.id === atc.author_id).name };
-    // });
-    // console.log(articlesWithName);
-    // return { ...state, articles: articlesWithName };
 
     case GET_ARTICLE:
       return { ...state, selectedArticle: action.target };
+
+    case ADD_ARTICLE:
+      const newArticle = {
+        id: action.id,
+        author_id: action.author_id,
+        title: action.title,
+        content: action.content,
+      };
+      return { ...state, articles: state.articles.concat(newArticle), selectedArticle: newArticle };
 
     default:
       break;

@@ -10,7 +10,7 @@ class ArticleList extends Component {
     this.props.onGetArticles(this.props.articles);
   }
 
-  onClickCreate = () => {
+  clickCreateHandler = () => {
     // move on to create pag
     this.props.history.push("/articles/create");
   };
@@ -44,7 +44,7 @@ class ArticleList extends Component {
           id="create-article-button"
           onClick={() => {
             console.log("onclick create function?");
-            this.onClickCreate();
+            this.clickCreateHandler();
           }}
         >
           Create Article

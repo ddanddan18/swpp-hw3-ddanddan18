@@ -4,3 +4,4 @@ export const GET_ALL_ARTICLES = "GET_ALL_ARTICLES";
 export const GET_ARTICLE = "GET_ARTICLE";
 export const GET_USERS = "GET_USERS";
 export const GET_LOGGED_IN = "GET_LOGGED_IN";
+export const ADD_ARTICLE = "ADD_ARTICLE";
