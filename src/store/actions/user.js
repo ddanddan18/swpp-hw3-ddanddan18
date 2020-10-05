@@ -12,14 +12,14 @@ export const getUsers = () => {
   };
 };
 
-export const getLoggedIn_ = (loggedIn) => {
-  return { type: actionTypes.GET_LOGGED_IN, isLoggedIn: loggedIn };
+export const getLoggedIn_ = (loggedIn, userID) => {
+  return { type: actionTypes.GET_LOGGED_IN, isLoggedIn: loggedIn, userID: userID };
 };
 
 export const getLoggedIn = () => {
   return (dispatch) => {
     return axios.get("/api/user/1").then((res) => {
-      dispatch(getLoggedIn_(res.data.logged_in));
+      dispatch(getLoggedIn_(res.data.logged_in, res.data.id));
     });
   };
 };
