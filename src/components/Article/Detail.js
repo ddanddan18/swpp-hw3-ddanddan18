@@ -1,8 +1,45 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import NewComment from "../../containers/NewComment/NewComment";
+import ArticleView from "./ArticleView";
+import * as actionCreators from "../../store/actions/index";
 
 class Detail extends Component {
+  componentDidMount() {
+    // selected로 넣기
+    this.props.onGetArticle(parseInt(this.props.match.params.id));
+  }
   render() {
-    return <h1>hi detail</h1>;
+    let title = "";
+    let content = "";
+    let authorName = "";
+    let articleID = null;
+    if (this.props.atc) {
+      title = this.props.atc.title;
+      content = this.props.atc.content;
+      authorName = this.props.users.find((user) => user.id === this.props.atc.author_id).name;
+      articleID = this.props.atc.id;
+    }
+    return (
+      <div className="Detail">
+        <ArticleView title={title} content={content} authorName={authorName} />
+        {/* TODO article detail buttons */}
+        {/* TODO comments 불러오기 */}
+        <NewComment articleID={articleID} />
+        <br />
+      </div>
+    );
   }
 }
-export default Detail;
+const mapStateToProps = (state) => {
+  return {
+    atc: state.atc.selectedArticle,
+    users: state.user.users,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onGetArticle: (id) => dispatch(actionCreators.getArticle(id)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Detail);

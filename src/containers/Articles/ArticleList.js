@@ -43,7 +43,6 @@ class ArticleList extends Component {
         <button
           id="create-article-button"
           onClick={() => {
-            console.log("onclick create function?");
             this.clickCreateHandler();
           }}
         >
@@ -62,7 +61,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    onGetArticles: (users) => dispatch(actionCreators.getArticles(users)),
+    onGetArticles: () => dispatch(actionCreators.getArticles()),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleList);

@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
 import Login from "./containers/Login/Login";
 import ArticleList from "./containers/Articles/ArticleList";
-import ArticleDetail from "./components/ArticleView/Detail";
+import ArticleDetail from "./components/Article/Detail";
 import NewArticle from "./containers/NewArticle/NewArticle";
 import { connect } from "react-redux";
 import * as actionCreators from "./store/actions/index";

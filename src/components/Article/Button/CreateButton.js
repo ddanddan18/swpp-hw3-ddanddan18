@@ -2,7 +2,7 @@ import React from "react";
 
 const CreateButton = (props) => {
   return (
-    <div className="Button" id="button">
+    <div className="CreateButton">
       <button id="back-create-article-button" onClick={props.backHandler}>
         Back
       </button>

@@ -14,7 +14,7 @@ class NewArticle extends Component {
   };
 
   postArticleHandler = () => {
-    this.props.onStoreArticle(this.state.title, this.state.content, this.props.userID);
+    this.props.onStoreArticle(this.props.userID, this.state.title, this.state.content);
   };
   render() {
     return (
@@ -39,7 +39,7 @@ class NewArticle extends Component {
             index={2}
             title={this.state.title}
             content={this.state.content}
-            author={this.props.users.find((user) => user.id === this.props.userID).name}
+            authorName={this.props.users.find((user) => user.id === this.props.userID).name}
           />
         </div>
         <Button
@@ -60,7 +60,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onStoreArticle: (title, content, userID) =>
+    onStoreArticle: (userID, title, content) =>
       dispatch(actionCreators.postArticle({ author_id: userID, title, content })),
   };
 };

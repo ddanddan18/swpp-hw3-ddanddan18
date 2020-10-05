@@ -14,11 +14,13 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import articleReducer from "./store/reducers/article";
 import userReducer from "./store/reducers/user";
+import commentReducer from "./store/reducers/comment";
 
 const history = createBrowserHistory();
 const rootReducer = combineReducers({
   atc: articleReducer,
   user: userReducer,
+  cmt: commentReducer,
   router: connectRouter(history),
 });
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk, routerMiddleware(history))));

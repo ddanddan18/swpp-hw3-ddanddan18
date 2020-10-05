@@ -5,3 +5,5 @@ export const GET_ARTICLE = "GET_ARTICLE";
 export const GET_USERS = "GET_USERS";
 export const GET_LOGGED_IN = "GET_LOGGED_IN";
 export const ADD_ARTICLE = "ADD_ARTICLE";
+export const ADD_COMMENT = "ADD_COMMENT";
+export const GET_ALL_COMMENTS = "GET_ALL_COMMENTS";

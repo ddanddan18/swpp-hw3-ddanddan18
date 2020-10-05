@@ -20,7 +20,7 @@ const reducer = (state = initialState, action) => {
         title: action.title,
         content: action.content,
       };
-      return { ...state, articles: state.articles.concat(newArticle), selectedArticle: newArticle };
+      return { ...state, articles: state.articles.concat(newArticle) };
 
     default:
       break;
