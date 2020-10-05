@@ -5,6 +5,7 @@ import Preview from "../../components/Article/ArticleView";
 import Tab from "../../components/Article/Tab/Tab";
 import Button from "../../components/Article/Button/CreateButton";
 import * as actionCreators from "../../store/actions/index";
+import Logout from "../Login/Logout";
 
 class NewArticle extends Component {
   state = {
@@ -19,6 +20,7 @@ class NewArticle extends Component {
   render() {
     return (
       <div className="NewArticle">
+        <Logout />
         <Tab
           value={this.state.value}
           onClick={(event) => {
