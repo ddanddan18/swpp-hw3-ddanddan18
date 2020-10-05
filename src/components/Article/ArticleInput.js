@@ -1,6 +1,6 @@
 import React from "react";
 
-const Input = (props) => {
+const ArticleInput = (props) => {
   return (
     <div className="tabContent" id="write-tab" hidden={props.value !== props.index}>
       <label>Title</label>
@@ -17,4 +17,4 @@ const Input = (props) => {
     </div>
   );
 };
-export default Input;
+export default ArticleInput;

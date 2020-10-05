@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = (props) => {
+const CreateButton = (props) => {
   return (
     <div className="Button" id="button">
       <button id="back-create-article-button" onClick={props.backHandler}>
@@ -12,4 +12,4 @@ const Button = (props) => {
     </div>
   );
 };
-export default Button;
+export default CreateButton;

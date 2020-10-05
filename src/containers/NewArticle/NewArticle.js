@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Input from "../../components/InputArticle/TabContent/Input";
-import Preview from "../../components/InputArticle/TabContent/Preview";
-import Tab from "../../components/InputArticle/Tab";
-import Button from "../../components/InputArticle/Button";
+import Input from "../../components/Article/ArticleInput";
+import Preview from "../../components/Article/ArticleView";
+import Tab from "../../components/Article/Tab/Tab";
+import Button from "../../components/Article/Button/CreateButton";
 import * as actionCreators from "../../store/actions/index";
 
 class NewArticle extends Component {
