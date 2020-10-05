@@ -9,6 +9,7 @@ const DetailButton = (props) => {
       <button id="delete-article-button" onClick={props.deleteHandler} hidden={!props.authenticated}>
         Detele Article
       </button>
+      <br />
       <button id="back-detail-article-button" onClick={props.backHandler} hidden={false}>
         Back
       </button>
