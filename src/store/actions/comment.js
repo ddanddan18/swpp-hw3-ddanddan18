@@ -1,6 +1,5 @@
 import * as actionTypes from "./actionTypes";
 import axios from "axios";
-import { push } from "connected-react-router";
 
 export const getComments_ = (comments) => {
   return { type: actionTypes.GET_ALL_COMMENTS, comments: comments };

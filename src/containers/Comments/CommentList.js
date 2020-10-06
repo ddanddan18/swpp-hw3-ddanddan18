@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router";
 import { connect } from "react-redux";
 import Comment from "../../components/Comment/Comment";
 import Button from "../../components/Comment/CommentButton";

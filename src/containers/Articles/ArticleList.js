@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router";
 import { connect } from "react-redux";
 import Article from "../../components/Article/Article";
 import * as actionCreators from "../../store/actions/index";
