@@ -9,7 +9,15 @@ class CommentList extends Component {
   componentDidMount() {
     this.props.onGetComments();
   }
-  // TODO edit, deleteHandler 안에서도 authenticated 검사할까?
+  editHandler = (commentID, authorID) => {
+    //TODO edit
+    if (this.props.userID !== authorID) return;
+    console.log("article edit");
+  };
+  deleteHandler = (commentID, authorID) => {
+    if (this.props.userID !== authorID) return;
+    this.props.onDeleteComment(commentID);
+  };
 
   render() {
     const comments = this.props.storedComments.filter((cmt) => {
@@ -22,8 +30,8 @@ class CommentList extends Component {
           <p>------</p>
           <Comment authorName={this.props.users.find((user) => user.id === cmt.author_id).name} content={cmt.content} />
           <Button
-            editHandler={() => console.log("comment edit")}
-            deleteHandler={() => console.log("delete comment")}
+            editHandler={() => this.editHandler(cmt.id, cmt.author_id)}
+            deleteHandler={() => this.deleteHandler(cmt.id, cmt.author_id)}
             authenticated={cmt.author_id === this.props.userID}
           />
           <p>------</p>
@@ -48,6 +56,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onGetComments: () => dispatch(actionCreators.getComments()),
+    onDeleteComment: (id) => dispatch(actionCreators.deleteComment(id)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(CommentList);

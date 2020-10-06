@@ -12,12 +12,14 @@ class Detail extends Component {
     // selected로 넣기
     this.props.onGetArticle(parseInt(this.props.match.params.id));
   }
-  editHandler = () => {
+  editHandler = (articleID, authorID) => {
     //TODO edit
+    if (this.props.userID !== authorID) return;
     console.log("article edit");
   };
-  deleteHandler = (id) => {
-    this.props.onDeleteArticle(id);
+  deleteHandler = (articleID, authorID) => {
+    if (this.props.userID !== authorID) return;
+    this.props.onDeleteArticle(articleID);
   };
   render() {
     let title = "";
@@ -39,7 +41,7 @@ class Detail extends Component {
         <ArticleView title={title} content={content} authorName={authorName} />
         <DetailButton
           editHandler={() => this.editHandler()}
-          deleteHandler={() => this.deleteHandler(articleID)}
+          deleteHandler={() => this.deleteHandler(articleID, authorID)}
           backHandler={() => this.props.history.push("/articles")}
           authenticated={authorID === this.props.userID}
         />

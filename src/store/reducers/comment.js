@@ -1,4 +1,4 @@
-import { ADD_COMMENT, GET_ALL_COMMENTS } from "../actions/actionTypes";
+import { ADD_COMMENT, DELETE_COMMENT, GET_ALL_COMMENTS } from "../actions/actionTypes";
 
 const initialState = {
   comments: [],
@@ -17,6 +17,12 @@ const reducer = (state = initialState, action) => {
         content: action.content,
       };
       return { ...state, comments: state.comments.concat(newComment) };
+
+    case DELETE_COMMENT:
+      const deleted = state.comments.filter((cmt) => {
+        return cmt.id !== action.targetID;
+      });
+      return { ...state, comments: deleted };
 
     default:
       break;
