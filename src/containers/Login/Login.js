@@ -41,6 +41,11 @@ class Login extends Component {
   }
 
   loginHandler = () => {
+    // check backend user data is ready
+    if (this.props.users === null || this.props.users.length === 0) {
+      this.props.onGetUsers();
+      this.props.onGetLoggedIn();
+    }
     // validation login input (find user in userlist)
     if (!this.authenticateInput()) return;
     // change authorize state
@@ -65,6 +70,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onLogin: (user) => dispatch(actionCreators.login(user)),
+    onGetUsers: () => dispatch(actionCreators.getUsers()),
+    onGetLoggedIn: () => dispatch(actionCreators.getLoggedIn()),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
