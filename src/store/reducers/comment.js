@@ -1,4 +1,4 @@
-import { ADD_COMMENT, DELETE_COMMENT, GET_ALL_COMMENTS } from "../actions/actionTypes";
+import { ADD_COMMENT, DELETE_COMMENT, EDIT_COMMENT, GET_ALL_COMMENTS } from "../actions/actionTypes";
 
 const initialState = {
   comments: [],
@@ -23,6 +23,13 @@ const reducer = (state = initialState, action) => {
         return cmt.id !== action.targetID;
       });
       return { ...state, comments: deleted };
+
+    case EDIT_COMMENT:
+      const edited = state.comments.map((cmt) => {
+        if (cmt.id === action.target.id) return action.target;
+        else return cmt;
+      });
+      return { ...state, comments: edited };
 
     default:
       break;

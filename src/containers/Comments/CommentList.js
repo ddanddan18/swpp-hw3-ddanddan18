@@ -9,10 +9,19 @@ class CommentList extends Component {
   componentDidMount() {
     this.props.onGetComments();
   }
-  editHandler = (commentID, authorID) => {
-    //TODO edit
-    if (this.props.userID !== authorID) return;
-    console.log("article edit");
+  editHandler = (cmt) => {
+    if (this.props.userID !== cmt.author_id) return;
+    console.log("comment edit");
+    // prompt input
+    const input = prompt("edit your comment", cmt.content);
+    // Check new input 1) modify 2) not-modify 3) blank 4) cancle
+    // cancle or blank
+    if (input === "" || input == null) return;
+    // not modify
+    if (input === cmt.content) return;
+    // modify: edit comment in db
+    const newComment = { ...cmt, content: input };
+    this.props.onEditComment(newComment);
   };
   deleteHandler = (commentID, authorID) => {
     if (this.props.userID !== authorID) return;
@@ -30,7 +39,7 @@ class CommentList extends Component {
           <p>------</p>
           <Comment authorName={this.props.users.find((user) => user.id === cmt.author_id).name} content={cmt.content} />
           <Button
-            editHandler={() => this.editHandler(cmt.id, cmt.author_id)}
+            editHandler={() => this.editHandler(cmt)}
             deleteHandler={() => this.deleteHandler(cmt.id, cmt.author_id)}
             authenticated={cmt.author_id === this.props.userID}
           />
@@ -57,6 +66,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onGetComments: () => dispatch(actionCreators.getComments()),
     onDeleteComment: (id) => dispatch(actionCreators.deleteComment(id)),
+    onEditComment: (cmt) => dispatch(actionCreators.editComment(cmt)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(CommentList);
