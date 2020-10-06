@@ -42,3 +42,28 @@ export const postArticle = (atc) => {
       .then((id) => dispatch(push("/articles/" + id)));
   };
 };
+
+export const deleteArticle_ = (id) => {
+  return {
+    type: actionTypes.DELETE_ARTICLE,
+    targetID: id,
+  };
+};
+export const deleteArticle = (id) => {
+  return (dispatch) => {
+    return axios
+      .delete("/api/articles/" + id)
+      .then((res) => {
+        dispatch(deleteArticle_(id));
+      })
+      .then(() => dispatch(push("/articles")));
+  };
+};
+
+export const editArticle_ = () => {
+  return null;
+};
+
+export const editArticle = () => {
+  return null;
+};

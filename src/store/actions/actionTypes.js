@@ -7,3 +7,7 @@ export const GET_LOGGED_IN = "GET_LOGGED_IN";
 export const ADD_ARTICLE = "ADD_ARTICLE";
 export const ADD_COMMENT = "ADD_COMMENT";
 export const GET_ALL_COMMENTS = "GET_ALL_COMMENTS";
+export const DELETE_ARTICLE = "DELETE_ARTICLE";
+export const DELETE_COMMENT = "DELETE_COMMENT";
+export const EDIT_ARTICLE = "EDIT_ARTICLE";
+export const EDIT_COMMENT = "EDIT_COMMENT";

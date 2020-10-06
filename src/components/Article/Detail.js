@@ -16,9 +16,8 @@ class Detail extends Component {
     //TODO edit
     console.log("article edit");
   };
-  deleteHandler = () => {
-    //TODO delete article data
-    this.props.history.push("/articles");
+  deleteHandler = (id) => {
+    this.props.onDeleteArticle(id);
   };
   render() {
     let title = "";
@@ -31,7 +30,8 @@ class Detail extends Component {
       content = this.props.atc.content;
       authorID = this.props.atc.author_id;
       authorName = this.props.users.find((user) => user.id === this.props.atc.author_id).name;
-      articleID = this.props.atc.id;
+      articleID = parseInt(this.props.atc.id);
+      console.log(articleID, typeof articleID);
     }
     return (
       <div className="Detail">
@@ -39,11 +39,10 @@ class Detail extends Component {
         <ArticleView title={title} content={content} authorName={authorName} />
         <DetailButton
           editHandler={() => this.editHandler()}
-          deleteHandler={() => this.deleteHandler()}
+          deleteHandler={() => this.deleteHandler(articleID)}
           backHandler={() => this.props.history.push("/articles")}
           authenticated={authorID === this.props.userID}
         />
-        {/* TODO article detail buttons */}
         <CommentList articleID={articleID} />
         <NewComment articleID={articleID} />
         <br />
@@ -61,6 +60,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onGetArticle: (id) => dispatch(actionCreators.getArticle(id)),
+    onDeleteArticle: (id) => dispatch(actionCreators.deleteArticle(id)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Detail);

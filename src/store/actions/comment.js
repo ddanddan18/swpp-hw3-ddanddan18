@@ -41,3 +41,25 @@ export const postComment = (cmt) => {
     });
   };
 };
+
+export const deleteComment_ = (id) => {
+  return {
+    type: actionTypes.DELETE_COMMENT,
+    targetID: id,
+  };
+};
+export const deleteComment = (id) => {
+  return (dispatch) => {
+    return axios.delete("/api/comments/" + id).then((res) => {
+      dispatch(deleteComment_(id));
+    });
+  };
+};
+
+export const editComment_ = () => {
+  return null;
+};
+
+export const editComment = () => {
+  return null;
+};
