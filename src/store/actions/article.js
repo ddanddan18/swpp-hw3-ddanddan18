@@ -54,16 +54,24 @@ export const deleteArticle = (id) => {
     return axios
       .delete("/api/articles/" + id)
       .then((res) => {
-        dispatch(deleteArticle_(id));
+        dispatch(deleteArticle_(res.data.id));
       })
       .then(() => dispatch(push("/articles")));
   };
 };
 
-export const editArticle_ = () => {
-  return null;
+export const editArticle_ = (atc) => {
+  return { type: actionTypes.EDIT_ARTICLE, target: atc };
 };
 
-export const editArticle = () => {
-  return null;
+export const editArticle = (atc) => {
+  return (dispatch) => {
+    return axios
+      .put("/api/articles/" + atc.id, atc)
+      .then((res) => {
+        dispatch(editArticle_(res.data));
+        return res.data.id;
+      })
+      .then((id) => dispatch(push("/articles/" + id)));
+  };
 };

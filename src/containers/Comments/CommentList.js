@@ -11,7 +11,6 @@ class CommentList extends Component {
   }
   editHandler = (cmt) => {
     if (this.props.userID !== cmt.author_id) return;
-    console.log("comment edit");
     // prompt input
     const input = prompt("edit your comment", cmt.content);
     // Check new input 1) modify 2) not-modify 3) blank 4) cancle
@@ -20,8 +19,8 @@ class CommentList extends Component {
     // not modify
     if (input === cmt.content) return;
     // modify: edit comment in db
-    const newComment = { ...cmt, content: input };
-    this.props.onEditComment(newComment);
+    const editedComment = { ...cmt, content: input };
+    this.props.onEditComment(editedComment);
   };
   deleteHandler = (commentID, authorID) => {
     if (this.props.userID !== authorID) return;

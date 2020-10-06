@@ -5,6 +5,7 @@ import { ConnectedRouter } from "connected-react-router";
 import Login from "./containers/Login/Login";
 import ArticleList from "./containers/Articles/ArticleList";
 import ArticleDetail from "./components/Article/Detail";
+import EditArticle from "./containers/EditArticle/EditArticle";
 import NewArticle from "./containers/NewArticle/NewArticle";
 import { connect } from "react-redux";
 import * as actionCreators from "./store/actions/index";
@@ -24,7 +25,7 @@ class App extends Component {
             <AuthRoute authenticated={this.props.isLoggedIn} path="/articles" exact component={ArticleList} />
             <AuthRoute authenticated={this.props.isLoggedIn} path="/articles/create" exact component={NewArticle} />
             <AuthRoute authenticated={this.props.isLoggedIn} path="/articles/:id" exact component={ArticleDetail} />
-
+            <AuthRoute authenticated={this.props.isLoggedIn} path="/articles/:id/edit" exact component={EditArticle} />
             <AuthRoute authenticated={this.props.isLoggedIn} render={() => <h1>Not Found</h1>} />
           </Switch>
         </div>

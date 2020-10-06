@@ -13,9 +13,9 @@ class Detail extends Component {
     this.props.onGetArticle(parseInt(this.props.match.params.id));
   }
   editHandler = (articleID, authorID) => {
-    //TODO edit
     if (this.props.userID !== authorID) return;
-    console.log("article edit");
+    // selected에 그대로 유지
+    this.props.history.push("/articles/" + articleID + "/edit");
   };
   deleteHandler = (articleID, authorID) => {
     if (this.props.userID !== authorID) return;
@@ -33,14 +33,13 @@ class Detail extends Component {
       authorID = this.props.atc.author_id;
       authorName = this.props.users.find((user) => user.id === this.props.atc.author_id).name;
       articleID = parseInt(this.props.atc.id);
-      console.log(articleID, typeof articleID);
     }
     return (
       <div className="Detail">
         <Logout />
         <ArticleView title={title} content={content} authorName={authorName} />
         <DetailButton
-          editHandler={() => this.editHandler()}
+          editHandler={() => this.editHandler(articleID, authorID)}
           deleteHandler={() => this.deleteHandler(articleID, authorID)}
           backHandler={() => this.props.history.push("/articles")}
           authenticated={authorID === this.props.userID}

@@ -1,4 +1,11 @@
-import { ADD_ARTICLE, DELETE_ARTICLE, DELETE_COMMENT, GET_ALL_ARTICLES, GET_ARTICLE } from "../actions/actionTypes";
+import {
+  ADD_ARTICLE,
+  DELETE_ARTICLE,
+  DELETE_COMMENT,
+  EDIT_ARTICLE,
+  GET_ALL_ARTICLES,
+  GET_ARTICLE,
+} from "../actions/actionTypes";
 
 const initialState = {
   articles: [],
@@ -27,6 +34,13 @@ const reducer = (state = initialState, action) => {
         return atc.id !== action.targetID;
       });
       return { ...state, articles: deleted };
+
+    case EDIT_ARTICLE:
+      const edited = state.articles.map((atc) => {
+        if (atc.id === action.target.id) return action.target;
+        else return atc;
+      });
+      return { ...state, articles: edited };
 
     default:
       break;
