@@ -22,10 +22,10 @@ class App extends Component {
           <Switch>
             <Route path="/login" exact component={Login} />
             <Redirect exact from="/" to="/login" />
-            <AuthRoute authenticated={this.props.isLoggedIn} path="/articles" exact component={ArticleList} />
             <AuthRoute authenticated={this.props.isLoggedIn} path="/articles/create" exact component={NewArticle} />
-            <AuthRoute authenticated={this.props.isLoggedIn} path="/articles/:id" exact component={ArticleDetail} />
             <AuthRoute authenticated={this.props.isLoggedIn} path="/articles/:id/edit" exact component={EditArticle} />
+            <AuthRoute authenticated={this.props.isLoggedIn} path="/articles/:id" exact component={ArticleDetail} />
+            <AuthRoute authenticated={this.props.isLoggedIn} path="/articles" exact component={ArticleList} />
             <AuthRoute authenticated={this.props.isLoggedIn} render={() => <h1>Not Found</h1>} />
           </Switch>
         </div>
