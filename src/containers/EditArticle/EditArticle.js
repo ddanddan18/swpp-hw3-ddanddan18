@@ -15,6 +15,7 @@ class EditArticle extends Component {
   };
 
   componentDidMount() {
+    this.props.onGetArticle(parseInt(this.props.match.params.id));
     if (this.props.atc) {
       this.setState({ title: this.props.atc.title });
       this.setState({ content: this.props.atc.content });
@@ -85,6 +86,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    onGetLoggedIn: () => dispatch(actionCreators.getLoggedIn()),
+    onGetArticle: (id) => dispatch(actionCreators.getArticle(id)),
     onEditArticle: (atc) => dispatch(actionCreators.editArticle(atc)),
   };
 };

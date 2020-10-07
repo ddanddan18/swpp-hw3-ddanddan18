@@ -13,9 +13,12 @@ import * as actionCreators from "./store/actions/index";
 class App extends Component {
   componentDidMount() {
     this.props.onGetUsers();
+    this.props.onGetArticles();
+    this.props.onGetComments();
     this.props.onGetLoggedIn();
   }
   render() {
+    console.log(this.props.isLoggedIn);
     return (
       <ConnectedRouter history={this.props.history}>
         <div className="App">
@@ -23,9 +26,9 @@ class App extends Component {
             <Route path="/login" exact component={Login} />
             <Redirect exact from="/" to="/login" />
             <AuthRoute authenticated={this.props.isLoggedIn} path="/articles/create" exact component={NewArticle} />
-            <AuthRoute authenticated={this.props.isLoggedIn} path="/articles/:id/edit" exact component={EditArticle} />
-            <AuthRoute authenticated={this.props.isLoggedIn} path="/articles/:id" exact component={ArticleDetail} />
             <AuthRoute authenticated={this.props.isLoggedIn} path="/articles" exact component={ArticleList} />
+            <AuthRoute authenticated={this.props.isLoggedIn} path="/articles/:id" exact component={ArticleDetail} />
+            <AuthRoute authenticated={this.props.isLoggedIn} path="/articles/:id/edit" exact component={EditArticle} />
             <AuthRoute authenticated={this.props.isLoggedIn} render={() => <h1>Not Found</h1>} />
           </Switch>
         </div>
@@ -56,6 +59,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onGetUsers: () => dispatch(actionCreators.getUsers()),
+    onGetArticles: () => dispatch(actionCreators.getArticles()),
+    onGetComments: () => dispatch(actionCreators.getComments()),
     onGetLoggedIn: () => dispatch(actionCreators.getLoggedIn()),
   };
 };
