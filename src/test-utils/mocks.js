@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { connectRouter, routerMiddleware } from "connected-react-router";
 
-import { history, middlewares } from "../index";
+import { history, middlewares } from "../store/store";
 import * as actionTypes from "../store/actions/actionTypes";
 
 const getMockArticleReducer = jest.fn(
