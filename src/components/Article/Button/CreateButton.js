@@ -6,7 +6,11 @@ const CreateButton = (props) => {
       <button id="back-create-article-button" onClick={props.backHandler}>
         Back
       </button>
-      <button id="confirm-create-article-button" onClick={props.confirmHandler} disabled={props.isEmpty}>
+      <button
+        id="confirm-create-article-button"
+        onClick={props.confirmHandler}
+        disabled={props.isEmpty}
+      >
         Confirm
       </button>
     </div>
