@@ -21,7 +21,9 @@ class ArticleList extends Component {
   render() {
     const articles = this.props.storedArticles.map((atc) => {
       // get author name from author_id
-      const authorUser = this.props.users.find((user) => user.id === atc.author_id);
+      const authorUser = this.props.users.find(
+        (user) => user.id === atc.author_id
+      );
 
       return (
         <Article
