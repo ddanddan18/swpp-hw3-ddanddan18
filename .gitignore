@@ -2,3 +2,5 @@ node_modules
 README.pdf
 api/_db.json
 api/_db.json
+.eslintrc.json
+.vscode
