@@ -2,9 +2,18 @@ import React from "react";
 
 const ArticleInput = (props) => {
   return (
-    <div className="tabContent" id="write-tab" hidden={props.value !== props.index}>
+    <div
+      className="tabContent"
+      id="write-tab"
+      hidden={props.value !== props.index}
+    >
       <label>Title</label>
-      <input id="article-title-input" type="text" value={props.title} onChange={props.onChangeTitle} />
+      <input
+        id="article-title-input"
+        type="text"
+        value={props.title}
+        onChange={props.onChangeTitle}
+      />
       <br />
       <label>Content</label>
       <textarea
