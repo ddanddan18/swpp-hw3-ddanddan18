@@ -1,4 +1,9 @@
-import { ADD_COMMENT, DELETE_COMMENT, EDIT_COMMENT, GET_ALL_COMMENTS } from "../actions/actionTypes";
+import {
+  ADD_COMMENT,
+  DELETE_COMMENT,
+  EDIT_COMMENT,
+  GET_ALL_COMMENTS,
+} from "../actions/actionTypes";
 
 const initialState = {
   comments: [],

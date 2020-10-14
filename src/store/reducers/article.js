@@ -1,4 +1,10 @@
-import { ADD_ARTICLE, DELETE_ARTICLE, EDIT_ARTICLE, GET_ALL_ARTICLES, GET_ARTICLE } from "../actions/actionTypes";
+import {
+  ADD_ARTICLE,
+  DELETE_ARTICLE,
+  EDIT_ARTICLE,
+  GET_ALL_ARTICLES,
+  GET_ARTICLE,
+} from "../actions/actionTypes";
 
 const initialState = {
   articles: [],

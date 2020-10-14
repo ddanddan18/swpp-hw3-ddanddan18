@@ -1,4 +1,9 @@
-import { GET_USERS, GET_LOGGED_IN, LOGIN, LOGOUT } from "../actions/actionTypes";
+import {
+  GET_USERS,
+  GET_LOGGED_IN,
+  LOGIN,
+  LOGOUT,
+} from "../actions/actionTypes";
 const initialState = {
   users: [],
   isLoggedIn: false,
@@ -11,7 +16,9 @@ const reducer = (state = initialState, action) => {
       return { ...state, users: action.users };
 
     case GET_LOGGED_IN:
-      if (action.isLoggedIn == null) return { ...state, isLoggedIn: false, userID: null };
+      if (action.isLoggedIn == null) {
+        return { ...state, isLoggedIn: false, userID: null };
+      }
       const loggedinUser = action.isLoggedIn ? action.userID : null;
       return { ...state, isLoggedIn: action.isLoggedIn, userID: loggedinUser };
 
@@ -27,7 +34,12 @@ const reducer = (state = initialState, action) => {
           return { ...user };
         }
       });
-      return { ...state, users: afterlLogin, isLoggedIn: isValidLogin, userID: loginId };
+      return {
+        ...state,
+        users: afterlLogin,
+        isLoggedIn: isValidLogin,
+        userID: loginId,
+      };
 
     case LOGOUT:
       let logedinId = state.userID;
@@ -41,7 +53,12 @@ const reducer = (state = initialState, action) => {
           return { ...user };
         }
       });
-      return { ...state, users: afterLogout, isLoggedIn: !isValidLogout, userID: logedinId };
+      return {
+        ...state,
+        users: afterLogout,
+        isLoggedIn: !isValidLogout,
+        userID: logedinId,
+      };
 
     default:
       break;
