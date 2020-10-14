@@ -2,15 +2,12 @@ import * as actionTypes from "./actionTypes";
 import axios from "axios";
 
 export const getUsers_ = (users) => {
-  console.log("getUsers_");
   return { type: actionTypes.GET_USERS, users };
 };
 
 export const getUsers = () => {
   return (dispatch) => {
-    console.log("getUsers");
     return axios.get("/api/user").then((res) => {
-      console.log("getUsers - after axios");
       dispatch(getUsers_(res.data));
     });
   };

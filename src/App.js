@@ -18,7 +18,6 @@ class App extends Component {
     this.props.onGetLoggedIn();
   }
   render() {
-    console.log(this.props.isLoggedIn);
     return (
       <ConnectedRouter history={this.props.history}>
         <div className="App">
