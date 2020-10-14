@@ -13,7 +13,7 @@ const stubUser = {
   logged_in: false,
 };
 
-describe("ActionCreators", () => {
+describe("UserActionCreators", () => {
   let spyGet;
   beforeEach(() => {
     spyGet = jest.spyOn(axios, "get").mockImplementation((url) => {
