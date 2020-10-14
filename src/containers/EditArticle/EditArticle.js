@@ -16,21 +16,25 @@ class EditArticle extends Component {
 
   componentDidMount() {
     this.props.onGetArticle(parseInt(this.props.match.params.id));
-    if (this.props.atc) {
-      this.setState({ title: this.props.atc.title });
-      this.setState({ content: this.props.atc.content });
-    }
+    this.setState({ title: this.props.atc.title });
+    this.setState({ content: this.props.atc.content });
   }
 
   confirmHandler = () => {
-    if (this.state.title === "" || this.state.content === "") return;
-    const editedArticle = { ...this.props.atc, title: this.state.title, content: this.state.content };
+    const editedArticle = {
+      ...this.props.atc,
+      title: this.state.title,
+      content: this.state.content,
+    };
     this.props.onEditArticle(editedArticle);
   };
 
   backHandler = () => {
     // not modified -> detail page
-    if (this.state.title === this.props.atc.title && this.state.content === this.props.atc.content) {
+    if (
+      this.state.title === this.props.atc.title &&
+      this.state.content === this.props.atc.content
+    ) {
       this.props.history.push("/articles/" + this.props.atc.id);
       return;
     }
@@ -45,6 +49,7 @@ class EditArticle extends Component {
       <div className="EditArticle">
         <Logout />
         <Tab
+          className="EditTab"
           value={this.state.value}
           onClick={(event) => {
             this.setState({ value: parseInt(event.target.value) });
@@ -56,15 +61,22 @@ class EditArticle extends Component {
             index={1}
             title={this.state.title}
             content={this.state.content}
-            onChangeTitle={(event) => this.setState({ title: event.target.value })}
-            onChangeContent={(event) => this.setState({ content: event.target.value })}
+            onChangeTitle={(event) => {
+              this.setState({ title: event.target.value });
+            }}
+            onChangeContent={(event) => {
+              this.setState({ content: event.target.value });
+            }}
           />
           <Preview
             value={this.state.value}
             index={2}
             title={this.state.title}
             content={this.state.content}
-            authorName={this.props.users.find((user) => user.id === this.props.userID).name}
+            authorName={
+              this.props.users.find((user) => user.id === this.props.userID)
+                .name
+            }
           />
         </div>
         <Button
@@ -86,7 +98,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onGetLoggedIn: () => dispatch(actionCreators.getLoggedIn()),
     onGetArticle: (id) => dispatch(actionCreators.getArticle(id)),
     onEditArticle: (atc) => dispatch(actionCreators.editArticle(atc)),
   };

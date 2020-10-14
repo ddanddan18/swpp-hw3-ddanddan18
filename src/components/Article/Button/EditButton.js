@@ -6,7 +6,11 @@ const EditButton = (props) => {
       <button id="back-edit-article-button" onClick={props.backHandler}>
         Back
       </button>
-      <button id="confirm-edit-article-button" onClick={props.confirmHandler} disabled={props.isEmpty}>
+      <button
+        id="confirm-edit-article-button"
+        onClick={props.confirmHandler}
+        disabled={props.isEmpty}
+      >
         Confirm
       </button>
     </div>

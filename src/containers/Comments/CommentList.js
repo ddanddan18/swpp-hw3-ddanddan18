@@ -35,7 +35,12 @@ class CommentList extends Component {
       return (
         <div className="Comment" key={cmt.id}>
           <p>------</p>
-          <Comment authorName={this.props.users.find((user) => user.id === cmt.author_id).name} content={cmt.content} />
+          <Comment
+            authorName={
+              this.props.users.find((user) => user.id === cmt.author_id).name
+            }
+            content={cmt.content}
+          />
           <Button
             editHandler={() => this.editHandler(cmt)}
             deleteHandler={() => this.deleteHandler(cmt.id, cmt.author_id)}

@@ -2,17 +2,26 @@ import * as actionTypes from "./actionTypes";
 import axios from "axios";
 
 export const getUsers_ = (users) => {
+  console.log("getUsers_");
   return { type: actionTypes.GET_USERS, users };
 };
 
 export const getUsers = () => {
   return (dispatch) => {
-    return axios.get("/api/user").then((res) => dispatch(getUsers_(res.data)));
+    console.log("getUsers");
+    return axios.get("/api/user").then((res) => {
+      console.log("getUsers - after axios");
+      dispatch(getUsers_(res.data));
+    });
   };
 };
 
 export const getLoggedIn_ = (loggedIn, userID) => {
-  return { type: actionTypes.GET_LOGGED_IN, isLoggedIn: loggedIn, userID: userID };
+  return {
+    type: actionTypes.GET_LOGGED_IN,
+    isLoggedIn: loggedIn,
+    userID: userID,
+  };
 };
 
 export const getLoggedIn = () => {

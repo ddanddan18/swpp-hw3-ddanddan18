@@ -5,7 +5,11 @@ const ArticleView = (props) => {
     <div
       className="tabContent"
       id="preview-tab"
-      hidden={props.value == null || props.index == null ? false : props.value !== props.index}
+      hidden={
+        props.value == null || props.index == null
+          ? false
+          : props.value !== props.index
+      }
     >
       <p id="article-author">Author: {props.authorName} </p>
       <h1 id="article-title">Title: {props.title}</h1>
