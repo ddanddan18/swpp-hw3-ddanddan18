@@ -31,7 +31,9 @@ class Detail extends Component {
       title = this.props.atc.title;
       content = this.props.atc.content;
       authorID = this.props.atc.author_id;
-      authorName = this.props.users.find((user) => user.id === this.props.atc.author_id).name;
+      authorName = this.props.users.find(
+        (user) => user.id === this.props.atc.author_id
+      ).name;
       articleID = parseInt(this.props.atc.id);
     }
     return (

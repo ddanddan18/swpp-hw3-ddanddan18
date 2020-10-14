@@ -5,9 +5,16 @@ import * as actionCreators from "../../store/actions/index";
 class Logout extends Component {
   render() {
     return (
-      <button id="logout-button" onClick={() => this.props.onLogout(this.props.users.find((user) => user.id === 1))}>
-        Logout
-      </button>
+      <div className="Logout">
+        <button
+          id="logout-button"
+          onClick={() =>
+            this.props.onLogout(this.props.users.find((user) => user.id === 1))
+          }
+        >
+          Logout
+        </button>
+      </div>
     );
   }
 }

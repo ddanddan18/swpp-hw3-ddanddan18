@@ -8,7 +8,11 @@ class NewComment extends Component {
   };
 
   postCommentHandler = () => {
-    this.props.onStoreComment(this.props.userID, this.props.articleID, this.state.comment);
+    this.props.onStoreComment(
+      this.props.userID,
+      this.props.articleID,
+      this.state.comment
+    );
     this.setState({ comment: "" });
   };
   render() {
@@ -43,8 +47,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onStoreComment: (userID, articleID, comment) =>
-      dispatch(actionCreators.postComment({ author_id: userID, article_id: articleID, content: comment })),
-    // TODO postComment 만들기
+      dispatch(
+        actionCreators.postComment({
+          author_id: userID,
+          article_id: articleID,
+          content: comment,
+        })
+      ),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(NewComment);

@@ -13,16 +13,6 @@ export const getComments = () => {
   };
 };
 
-export const postArticle_ = (atc) => {
-  return {
-    type: actionTypes.ADD_ARTICLE,
-    id: atc.id,
-    author_id: atc.author_id,
-    title: atc.title,
-    content: atc.content,
-  };
-};
-
 export const postComment_ = (cmt) => {
   return {
     type: actionTypes.ADD_COMMENT,

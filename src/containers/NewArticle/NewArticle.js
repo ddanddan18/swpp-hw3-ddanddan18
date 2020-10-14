@@ -15,13 +15,18 @@ class NewArticle extends Component {
   };
 
   postArticleHandler = () => {
-    this.props.onStoreArticle(this.props.userID, this.state.title, this.state.content);
+    this.props.onStoreArticle(
+      this.props.userID,
+      this.state.title,
+      this.state.content
+    );
   };
   render() {
     return (
       <div className="NewArticle">
         <Logout />
         <Tab
+          className="CreateArticleTab"
           value={this.state.value}
           onClick={(event) => {
             this.setState({ value: parseInt(event.target.value) });
@@ -33,15 +38,22 @@ class NewArticle extends Component {
             index={1}
             title={this.state.title}
             content={this.state.content}
-            onChangeTitle={(event) => this.setState({ title: event.target.value })}
-            onChangeContent={(event) => this.setState({ content: event.target.value })}
+            onChangeTitle={(event) =>
+              this.setState({ title: event.target.value })
+            }
+            onChangeContent={(event) =>
+              this.setState({ content: event.target.value })
+            }
           />
           <Preview
             value={this.state.value}
             index={2}
             title={this.state.title}
             content={this.state.content}
-            authorName={this.props.users.find((user) => user.id === this.props.userID).name}
+            authorName={
+              this.props.users.find((user) => user.id === this.props.userID)
+                .name
+            }
           />
         </div>
         <Button
@@ -63,7 +75,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onStoreArticle: (userID, title, content) =>
-      dispatch(actionCreators.postArticle({ author_id: userID, title, content })),
+      dispatch(
+        actionCreators.postArticle({ author_id: userID, title, content })
+      ),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(NewArticle);
