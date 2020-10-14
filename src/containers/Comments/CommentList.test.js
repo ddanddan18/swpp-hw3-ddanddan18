@@ -6,7 +6,7 @@ import { Route, Switch } from "react-router-dom";
 
 import { getMockStore } from "../../test-utils/mocks";
 import { history } from "../../store/store";
-import * as articleCommentActionCreators from "../../store/actions/comment";
+import * as commentActionCreators from "../../store/actions/comment";
 
 import CommentList from "./CommentList";
 
@@ -85,17 +85,17 @@ describe("<CommentList />", () => {
       </Provider>
     );
     spyGetComments = jest
-      .spyOn(articleCommentActionCreators, "getComments")
+      .spyOn(commentActionCreators, "getComments")
       .mockImplementation(() => {
         return (dispatch) => {};
       });
     spyDeleteComment = jest
-      .spyOn(articleCommentActionCreators, "deleteComment")
+      .spyOn(commentActionCreators, "deleteComment")
       .mockImplementation((id) => {
         return (dispatch) => {};
       });
     spyEditComment = jest
-      .spyOn(articleCommentActionCreators, "editComment")
+      .spyOn(commentActionCreators, "editComment")
       .mockImplementation((id) => {
         return (dispatch) => {};
       });
